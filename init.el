@@ -359,7 +359,7 @@ you should place your code here."
                                           (evil-next-line-first-non-blank)
                                           ))
 
- 
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
