@@ -2,8 +2,7 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
-(defun dotspacemacs/layers ()
-  "Configuration Layers declaration.
+(defun dotspacemacs/layers () "Configuration Layers declaration.
 You should not put any user code in this function besides modifying the variable
 values."
   (setq-default
@@ -358,7 +357,11 @@ you should place your code here."
                                           (evil-normal-state)
                                           (evil-next-line-first-non-blank)
                                           ))
-
+  ;; Bound redo to U to be more analogous to u (in my mind)
+  (define-key evil-normal-state-map "U" (lambda()
+                                          (interactive)
+                                          (undo-tree-redo)
+                                          ))
 
   )
 
