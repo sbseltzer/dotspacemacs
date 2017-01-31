@@ -50,9 +50,9 @@ values."
      emacs-lisp
      git
      markdown
+     yaml
      ruby
      jekyll
-     yaml
      ;; org
      (shell :variables
             shell-default-shell 'eshell
