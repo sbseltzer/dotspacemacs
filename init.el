@@ -69,6 +69,8 @@ values."
      javascript
      html
      php
+     semantic
+     csharp
      ;; css
      (evil-snipe :variables
                  evil-snipe-enable-alternate-f-and-t-behaviors t)
