@@ -350,6 +350,9 @@ you should place your code here."
   ;; (setq-default js2-basic-offset 2)
   (golden-ratio-mode)
   (indent-guide-global-mode t)
+  ;; Fix indents in C
+  (setq c-default-style "linux"
+        c-basic-offset 2)
   ;; Allow me to do fd or df for escape sequence.
   (setq evil-escape-unordered-key-sequence t)
 
