@@ -330,6 +330,16 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+
+  ;; Try to fix tramp on windows.
+  (setq tramp-default-user "sam")
+  (setq tramp-default-method "scp")
+  (setq tramp-verbose 6)
+  (setq tramp-ssh-controlmaster-options
+        "-tt -o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=yes")
+  (add-to-list 'tramp-remote-path  "/usr/local/git/bin")
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+
   ;; Rebind surround to S instead of s, so we can use s for avy
   (evil-define-key 'operator evil-surround-mode-map "S" 'evil-surround-edit)
   (evil-define-key 'visual evil-surround-mode-map "S" 'evil-surround-region)
@@ -350,8 +360,14 @@ you should place your code here."
 
   ;; misc
   ;; (setq-default js2-basic-offset 2)
+
+  ;; Enable golden ratio by default
   (golden-ratio-mode)
+  ;; Turn off flyspell by default
+  (flyspell-mode-off)
+  ;; Turn on indent guide
   (indent-guide-global-mode t)
+
   ;; Fix indents in C
   (setq c-default-style "linux"
         c-basic-offset 2)
