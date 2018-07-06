@@ -4,3 +4,6 @@
 [submodule "layers/jekyll"]
 	path = layers/jekyll
 	url = https://github.com/0x414A/spacemacs-jekyll.git
+[submodule "logo"]
+	path = logo
+	url = https://github.com/nashamri/spacemacs-logo.git
