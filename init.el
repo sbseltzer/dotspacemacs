@@ -503,7 +503,7 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (binding-config)
   (toggle-modes-config)
-  (windows-config)
+  (os-specific-config)
   (programming-config)
   (orx-config)
   )
