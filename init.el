@@ -622,8 +622,7 @@ before packages are loaded."
 (defun toggle-modes-config ()
   ;; Enable golden ratio by default
   (golden-ratio-mode)
-  ;; Turn off flyspell by default
-  (flyspell-mode-off)
+  ;; TODO flyspell by default (have not yet found a way that works)
   (spacemacs/toggle-spelling-checking-off)
   ;; Turn on indent guide
   (indent-guide-global-mode t)
@@ -651,6 +650,7 @@ before packages are loaded."
       (windows-init))
   )
 (defun windows-init ()
+  ;; http://aspell.net/win32/
   (add-to-list 'exec-path "C:/Aspell/bin/")
   (setq ispell-program-name "aspell")
   )
