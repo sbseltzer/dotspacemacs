@@ -38,6 +38,7 @@ This function should only modify configuration layer settings."
      octave
      autohotkey
      windows-scripts
+     python
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -56,13 +57,11 @@ This function should only modify configuration layer settings."
      markdown
      yaml
      ruby
-     ;; jekyll
      ;; org
      (shell :variables
-            shell-default-shell 'eshell
-            ;; shell-enable-smart-eshell t
+            shell-default-shell 'shell
             shell-default-height 30
-            shell-default-position 'bottom)
+            shell-default-position 'bottom-and-right)
      spell-checking
      syntax-checking
      ;; version-control
@@ -74,7 +73,6 @@ This function should only modify configuration layer settings."
      (c-c++ :variables
             ;; c-c++-enable-clang-support t
             c-c++-default-mode-for-headers 'c++-mode)
-     gtags
      semantic
      ;; css
      evil-snipe
@@ -491,6 +489,10 @@ This function is called while dumping Spacemacs configuration. You can
 in the dump."
   )
 
+(defun git-bash () (interactive)
+       (let ((explicit-shell-file-name "c:/Program Files/Git/bin/bash.exe"))
+         (call-interactively 'shell)))
+
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
@@ -689,7 +691,231 @@ This function is called at the very end of Spacemacs initialization."
    ;; If there is more than one, they won't work right.
    '(package-selected-packages
      (quote
-      (evil-goggles ivy smartparens projectile helm helm-core shut-up js2-mode stickyfunc-enhance srefactor omnisharp csharp-mode yaml-mode smeargle rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake phpunit phpcbf php-extras php-auto-yasnippets orgit org minitest magit-gitflow lua-mode hyde helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-snipe evil-magit magit magit-popup git-commit with-editor dash drupal-mode php-mode chruby bundler inf-ruby xterm-color ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit spacemacs-theme spaceline slim-mode shell-pop scss-mode sass-mode restart-emacs request rainbow-delimiters quelpa pug-mode popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree multi-term move-text mmm-mode markdown-toc macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gh-md flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump define-word company-web company-tern company-statistics column-enforce-mode coffee-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell unfill mwim helm-gtags ggtags flyspell-correct disaster csv-mode company-c-headers cmake-mode clang-format yapfify winum pyvenv pytest pyenv-mode py-isort powershell pip-requirements live-py-mode hy-mode helm-pydoc fuzzy diminish cython-mode company-anaconda ahk-mode))))
+      (
+       evil-goggles
+       ivy
+       smartparens
+       projectile
+       helm
+       helm-core
+       shut-up
+       js2-mode
+       stickyfunc-enhance
+       srefactor
+       omnisharp
+       csharp-mode
+       yaml-mode
+       smeargle
+       rvm
+       ruby-tools
+       ruby-test-mode
+       rubocop
+       rspec-mode
+       robe
+       rbenv
+       rake
+       phpunit
+       phpcbf
+       php-extras
+       php-auto-yasnippets
+       orgit
+       org
+       minitest
+       magit-gitflow
+       lua-mode
+       hyde
+       helm-gitignore
+       gitignore-mode
+       gitconfig-mode
+       gitattributes-mode
+       git-timemachine
+       git-messenger
+       git-link
+       evil-snipe
+       evil-magit
+       magit
+       magit-popup
+       git-commit
+       with-editor
+       dash
+       drupal-mode
+       php-mode
+       chruby
+       bundler
+       inf-ruby
+       xterm-color
+       ws-butler
+       window-numbering
+       which-key
+       web-mode
+       web-beautify
+       volatile-highlights
+       vi-tilde-fringe
+       uuidgen
+       use-package
+       toc-org
+       tagedit
+       spacemacs-theme
+       spaceline
+       slim-mode
+       shell-pop
+       scss-mode
+       sass-mode
+       restart-emacs
+       request
+       rainbow-delimiters
+       quelpa
+       pug-mode
+       popwin
+       persp-mode
+       pcre2el
+       paradox
+       org-plus-contrib
+       org-bullets
+       open-junk-file
+       neotree
+       multi-term
+       move-text
+       mmm-mode
+       markdown-toc
+       macrostep
+       lorem-ipsum
+       livid-mode
+       linum-relative
+       link-hint
+       less-css-mode
+       json-mode
+       js2-refactor
+       js-doc
+       info+
+       indent-guide
+       ido-vertical-mode
+       hungry-delete
+       hl-todo
+       highlight-parentheses
+       highlight-numbers
+       highlight-indentation
+       hide-comnt
+       help-fns+
+       helm-themes
+       helm-swoop
+       helm-projectile
+       helm-mode-manager
+       helm-make
+       helm-flx
+       helm-descbinds
+       helm-css-scss
+       helm-company
+       helm-c-yasnippet
+       helm-ag
+       google-translate
+       golden-ratio
+       gh-md
+       flyspell-correct-helm
+       flycheck-pos-tip
+       flx-ido
+       fill-column-indicator
+       fancy-battery
+       eyebrowse
+       expand-region
+       exec-path-from-shell
+       evil-visualstar
+       evil-visual-mark-mode
+       evil-unimpaired
+       evil-tutor
+       evil-surround
+       evil-search-highlight-persist
+       evil-numbers
+       evil-nerd-commenter
+       evil-mc
+       evil-matchit
+       evil-lisp-state
+       evil-indent-plus
+       evil-iedit-state
+       evil-exchange
+       evil-escape
+       evil-ediff
+       evil-args
+       evil-anzu
+       eval-sexp-fu
+       eshell-z
+       eshell-prompt-extras
+       esh-help
+       emmet-mode
+       elisp-slime-nav
+       dumb-jump
+       define-word
+       company-web
+       company-tern
+       company-statistics
+       column-enforce-mode
+       coffee-mode
+       clean-aindent-mode
+       auto-yasnippet
+       auto-highlight-symbol
+       auto-dictionary
+       auto-compile
+       aggressive-indent
+       adaptive-wrap
+       ace-window
+       ace-link
+       ace-jump-helm-line
+       ac-ispell
+       unfill
+       mwim
+       helm-gtags
+       ggtags
+       flyspell-correct
+       disaster
+       csv-mode
+       company-c-headers
+       cmake-mode
+       clang-format
+       yapfify
+       winum
+       pyvenv
+       pytest
+       pyenv-mode
+       py-isort
+       powershell
+       pip-requirements
+       live-py-mode
+       hy-mode
+       helm-pydoc
+       fuzzy
+       diminish
+       cython-mode
+       company-anaconda
+       ahk-mode
+       sokoban
+       skewer-mode
+       packed
+       s
+       hydra
+       anaconda-mode
+       dash-functional
+       iedit
+       highlight
+       yasnippet
+       epl
+       pythonic
+       f
+       simple-httpd
+       powerline
+       bind-key
+       evil
+       company
+       avy
+       markdown-mode
+       flycheck
+       ghub
+       let-alist
+       undo-tree
+       pkg-info
+       multiple-cursors
+       goto-chg
+       async
+       ))))
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
    ;; If you edit it by hand, you could mess it up, so be careful.
