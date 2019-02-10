@@ -541,25 +541,25 @@ before packages are loaded."
   ;; (add-to-list 'tramp-remote-path  "/usr/local/git/bin")
   ;; (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
 
-  ;; Fix on windows to improve magit status performance
-  ;; https://emacs.stackexchange.com/questions/19440/magit-extremely-slow-in-windows-how-do-i-optimize#19525
-  ;; WORKAROUND https://github.com/magit/magit/issues/2395
-  ;; TODO this does not yet support staging chunks of files, which makes it sorta useless at the moment since I often use that.
-  (define-derived-mode magit-staging-mode magit-status-mode "Magit staging"
-    "Mode for showing staged and unstaged changes."
-    :group 'magit-status)
-  (defun magit-staging-refresh-buffer ()
-    (magit-insert-section (status)
-      (magit-insert-untracked-files)
-      (magit-insert-unstaged-changes)
-      (magit-insert-staged-changes)
-      ))
-  (defun magit-staging ()
-    (interactive)
-    (magit-mode-setup #'magit-staging-mode))
-  ;; More tips: https://github.com/magit/magit/wiki/Tips-and-Tricks
   )
 
+;; Fix on windows to improve magit status performance
+;; https://emacs.stackexchange.com/questions/19440/magit-extremely-slow-in-windows-how-do-i-optimize#19525
+;; WORKAROUND https://github.com/magit/magit/issues/2395
+;; TODO this does not yet support staging chunks of files, which makes it sorta useless at the moment since I often use that.
+(define-derived-mode magit-staging-mode magit-status-mode "Magit staging"
+  "Mode for showing staged and unstaged changes."
+  :group 'magit-status)
+(defun magit-staging-refresh-buffer ()
+  (magit-insert-section (status)
+    (magit-insert-untracked-files)
+    (magit-insert-unstaged-changes)
+    (magit-insert-staged-changes)
+    ))
+(defun magit-staging ()
+  (interactive)
+  (magit-mode-setup #'magit-staging-mode))
+;; More tips: https://github.com/magit/magit/wiki/Tips-and-Tricks
 
 (defun os-specific-config ()
   (message "Running OS-specific config for '%s'" system-type)
