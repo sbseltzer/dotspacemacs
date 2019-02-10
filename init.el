@@ -482,6 +482,7 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (os-specific-init)
   ;; Replace f/F/t/T behaviors with evil-snipe behavior
+  (setq yas-installed-snippets-dir nil)
   )
 
 (defun dotspacemacs/user-load ()
