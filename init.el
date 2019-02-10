@@ -672,6 +672,13 @@ before packages are loaded."
   (setq c-default-style "linux"
         c-basic-offset 2)
   (setq-default c-auto-newline nil)
+
+  ;; Fix indents in C#
+  (defun my-csharp-hook ()
+    (c-set-offset 'inline-open 0)
+    (c-set-offset 'comment-intro 0)
+    )
+  (add-hook 'csharp-mode-hook 'my-csharp-hook)
   )
 
 (defun os-specific-init ()
