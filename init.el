@@ -494,14 +494,6 @@ in the dump."
        (let ((explicit-shell-file-name "c:/Program Files/Git/bin/bash.exe"))
          (call-interactively 'shell)))
 
-(defun register-macros ()
-  (fset 'sam-insert-date
-        [?: ?r ?! ?d ?a ?t ?e ?  ?+ ?% ?x return escape])
-  (fset 'sam-insert-time
-        [?: ?r ?! ?d ?a ?t ?e ?  ?+ ?% ?H ?: ?% ?M return escape])
-   ;; (evil-set-register ?f [?i ?f ?o ?o ?b ?a ?r escape])
-)
-
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
@@ -513,29 +505,39 @@ before packages are loaded."
   (os-specific-config)
   (programming-config)
   (orx-config)
-  )
-
-(defun os-specific-init ()
-  (message "Running OS-specific init for '%s'" system-type)
-  (if (eq system-type 'windows-nt)
-      (windows-init))
-  )
-(defun windows-init ()
+  (defun insert-current-date () (interactive)
+         (forward-line)
+         (insert (shell-command-to-string "echo -n $(date +'%Y/%m/%d ()')"))
+         (forward-line))
+  (defun insert-start-time () (interactive)
+         (forward-char)
+         (insert (shell-command-to-string "echo -n $(date +%H:%M)")))
+  (defun insert-end-time () (interactive)
+         (forward-char)
+         (insert (shell-command-to-string "echo -n $(date +-%H:%M)")))
+  ;; (add-to-list 'exec-path "/home/sseltzer/bin/ripgrep-0.10.0-x86_64-unknown-linux-musl/")
+  ;; (spacemacs/set-leader-keys "ps" 'helm-projectile-rg)
+  ;; (setq c-basic-offset 2
+  ;;       tab-width 2
+  ;;       c-tab-always-indent t
+  ;;       c-syntactic-indentation-in-macros t
+  ;;       indent-tabs-mode t)
+  ;; (grep-apply-setting 'grep-template "rg --no-heading -H -uu -g <F> <R> <D>")
   )
 
 (defun windows-config ()
   (message "Running Windows config")
 
   ;; I install aspell for windows and put it at this path
-  (add-to-list 'exec-path "C:/Aspell/bin/")
-  (setq ispell-program-name "aspell")
+  ;; (add-to-list 'exec-path "C:/Aspell/bin/")
+  ;; (setq ispell-program-name "aspell")
   ;; Start with spell-checking off by default to save load time
-  (spelling-checking)
+  ;; (spelling-checking)
 
   ;; I like using the shell that comes with Git when I'm on Wndows
   (setq shell-default-term-shell "C:/Program Files/Git/bin/bash.exe")
   ;; This is where Omnisharp lives on my Widnows machines
-  (setq omnisharp-server-executable-path "~/personal/omnisharp-win-x64/OmniSharp.exe")
+  (setq omnisharp-server-executable-path "~/omnisharp-win-x64/OmniSharp.exe")
 
   ;; Try to improve slow performance on windows.
   (setq w32-get-true-file-attributes nil)
