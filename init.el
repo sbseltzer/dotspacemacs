@@ -643,10 +643,27 @@ before packages are loaded."
   (spacemacs/toggle-syntax-checking-off)
   )
 
+(defun fake-uc-mode ()
+  (interactive)
+  (spacemacs/toggle-syntax-checking-off)
+  (c-mode)
+  (spacemacs/toggle-syntax-checking-off)
+  (setq indent-tabs-mode 't)
+  (setq tab-width 4) ; Assuming you want your tabs to be four spaces wide
+  (c-set-offset 'statement-block-intro '++)
+  (c-set-offset 'defun-block-intro '++)
+  (c-set-offset 'comment-intro 0)
+  (c-set-offset 'statement-cont 0)
+  (message "finished loading fake-uc-mode")
+  )
+
 (defun programming-config ()
   (defun my-semantic-hook ()
     (semantic-add-system-include "../inc" 'c++-mode))
   (add-hook 'semantic-init-hooks 'my-semantic-hook)
+
+  ;; Use c-mode for unrealscript files
+  (add-to-list 'auto-mode-alist '("\\.uc\\'" . fake-uc-mode))
 
   ;; misc
   ;; (setq-default js2-basic-offset 2)
