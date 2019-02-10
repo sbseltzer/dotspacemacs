@@ -75,7 +75,9 @@ This function should only modify configuration layer settings."
             c-c++-default-mode-for-headers 'c++-mode)
      semantic
      ;; css
-     evil-snipe
+     (evil-snipe :variables
+                 evil-snipe-enable-alternate-f-and-t-behaviors t
+                 evil-snipe-scope 'whole-buffer)
      )
 
    ;; List of additional packages that will be installed without being
@@ -479,7 +481,6 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (os-specific-init)
   ;; Replace f/F/t/T behaviors with evil-snipe behavior
-  (setq evil-snipe-enable-alternate-f-and-t-behaviors t)
   )
 
 (defun dotspacemacs/user-load ()
