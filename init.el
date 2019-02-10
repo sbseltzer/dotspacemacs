@@ -578,12 +578,6 @@ before packages are loaded."
       (windows-config))
   )
 
-(defun os-specific-layers ()
-  (message "Running OS-specific config for '%s'" system-type)
-  (if (eq system-type 'windows-nt)
-      (windows-config))
-  )
-
 ;; Everything from here until the auto-generated stuff are helper functions that split up my user-init and user-config functions
 ;; It also contains some other stuff to bridge gaps between my Linux and Windows machines
 (defmacro define-and-bind-text-object (key start-regex end-regex)
@@ -691,26 +685,6 @@ before packages are loaded."
   ;; http://aspell.net/win32/
   (add-to-list 'exec-path "C:/Aspell/bin/")
   (setq ispell-program-name "aspell")
-  )
-
-(defun windows-config ()
-  (message "Running Windows config")
-  ;; I like using the shell that comes with Git when I'm on Wndows
-  (setq shell-default-term-shell "C:/Program Files/Git/bin/bash.exe")
-  ;; This is where Omnisharp lives on my Widnows machines
-  (setq omnisharp-server-executable-path "~/personal/omnisharp-win-x64/OmniSharp.exe")
-
-  ;; Try to improve slow performance on windows.
-  (setq w32-get-true-file-attributes nil)
-
-  ;; Try to fix tramp on windows.
-  ;; (setq tramp-default-user "sam")
-  ;; (setq tramp-default-method "scp")
-  ;; (setq tramp-verbose 6)
-  ;; (setq tramp-ssh-controlmaster-options
-  ;;       "-tt -o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=yes")
-  ;; (add-to-list 'tramp-remote-path  "/usr/local/git/bin")
-  ;; (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
