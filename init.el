@@ -34,11 +34,11 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     csv
-     octave
-     autohotkey
-     windows-scripts
-     python
+     ;; csv
+     ;; octave
+     ;; autohotkey
+     ;; windows-scripts
+     ;; python
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -55,25 +55,26 @@ This function should only modify configuration layer settings."
      emacs-lisp
      git
      markdown
-     yaml
-     ruby
-     ;; org
+     ;; yaml
+     ;; ruby
+     org
      (shell :variables
             shell-default-shell 'shell
             shell-default-height 30
             shell-default-position 'bottom-and-right)
-     spell-checking
+     ;; spell-checking
      syntax-checking
      ;; version-control
      csharp
-     lua
-     javascript
-     html
+     ;; lua
+     ;; javascript
+     ;; html
      ;; php
      (c-c++ :variables
             ;; c-c++-enable-clang-support t
             c-c++-default-mode-for-headers 'c++-mode)
      semantic
+     ;; gtags
      ;; css
      (evil-snipe :variables
                  evil-snipe-enable-alternate-f-and-t-behaviors t
