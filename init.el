@@ -494,6 +494,14 @@ in the dump."
        (let ((explicit-shell-file-name "c:/Program Files/Git/bin/bash.exe"))
          (call-interactively 'shell)))
 
+(defun register-macros ()
+  (fset 'sam-insert-date
+        [?: ?r ?! ?d ?a ?t ?e ?  ?+ ?% ?x return escape])
+  (fset 'sam-insert-time
+        [?: ?r ?! ?d ?a ?t ?e ?  ?+ ?% ?H ?: ?% ?M return escape])
+   ;; (evil-set-register ?f [?i ?f ?o ?o ?b ?a ?r escape])
+)
+
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
